@@ -119,6 +119,11 @@ def sanitize_title(title, ok="-_()[]{}"):
 
 
 def filter_path(path):
+    """
+    create path or clean path
+    :param path:
+    :return:
+    """
     if not os.path.exists(path):
         os.makedirs(path)
     for temp in os.listdir(path):
@@ -262,3 +267,7 @@ def content_available(url):
         return False
     else:
         return response.getcode() < 300
+
+
+if __name__ == '__main__':
+    print(get_music_dir())

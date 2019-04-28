@@ -19,7 +19,7 @@ default_conf = {
         "no-metadata": False,
         "no-fallback-metadata": False,
         "avconv": False,
-        "folder": internals.get_music_dir(),
+        "folder": internals.get_music_dir(),  # default path C:\Users\zhouwei_vendor\Music
         "overwrite": "prompt",
         "input-ext": ".m4a",
         "output-ext": ".mp3",
@@ -93,6 +93,7 @@ def get_arguments(raw_args=None, to_group=True, to_merge=True):
     )
 
     if to_merge:
+        # C:\Users\zhouwei_vendor\AppData\Local\spotdl: config.yml
         config_dir = os.path.join(appdirs.user_config_dir(), "spotdl")
         os.makedirs(config_dir, exist_ok=True)
         config_file = os.path.join(config_dir, "config.yml")
@@ -160,7 +161,7 @@ def get_arguments(raw_args=None, to_group=True, to_merge=True):
         help="use avconv for conversion (otherwise defaults to ffmpeg)",
         action="store_true",
     )
-    parser.add_argument(
+    parser.add_argument(    # !important
         "-f",
         "--folder",
         default=os.path.abspath(config["folder"]),

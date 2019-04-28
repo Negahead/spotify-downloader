@@ -6,7 +6,6 @@ import pprint
 import logzero
 from logzero import logger as log
 
-from spotdl import __version__
 from spotdl import const
 from spotdl import handle
 from spotdl import internals
